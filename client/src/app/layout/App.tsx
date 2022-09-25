@@ -54,7 +54,7 @@ function App() {
     setDarkMode(!darkMode);
   }
 
-  if (loading) return <LoadingComponent message='Initialising app...' />
+  if (loading) return <LoadingComponent message='Redirecting to Deeflow Global...' />
 
   return (
     <ThemeProvider theme={theme}>
