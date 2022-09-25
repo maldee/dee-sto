@@ -7,7 +7,7 @@ import { useAppDispatch } from "../../app/store/configureStore";
 import { setBasket } from "../basket/basketSlice";
 import CheckoutPage from "./CheckoutPage";
 
-const stripePromise = loadStripe("pk_test_51Ll3EvIrlPwy7RyQ43HonJ0DATuM0kVsTqBnYGx1o61gxxJMic5R0XmOL3lObasrJ9cTT4xtPGHDNvAjbzcVjTRS006wD55Zpt")
+const stripePromise = loadStripe("pk_test_51Lm1HVG0X8U0nLczOxt2NHo22V0Y9vni1TJZksFVxb4yCpOzNEwJH0r3dGLwpGnlHQJAd6hLB8SxiM2LlQYknoLW00628ntws9")
 
 export default function CheckoutWrapper() {
     const dispatch = useAppDispatch();
