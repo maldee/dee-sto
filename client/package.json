@@ -39,7 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && move build ../API/wwwroot",
+    "build": "(if exist ..\\API\\wwwroot rmdir /s /q ..\\API\\wwwroot) && react-scripts build && move build ../API/wwwroot",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
