@@ -28,8 +28,14 @@ const navStyles = {
         color: 'grey.500'
     },
     '&.active': {
-        color: 'text.secondary'
+        color: '#707090'
     }
+}
+
+const navBrandStyles = {
+    color: '#707090',
+    textDecoration: 'none',
+    typography: 'h6'
 }
 
 export default function Header({ darkMode, handleThemeChange }: Props) {
@@ -85,11 +91,11 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
       }));
 
     return (
-        <AppBar position='static'>
+        <AppBar position='static' elevation={0}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Box display='flex' alignItems='center'>
-                    <Typography variant='h6' component={NavLink} exact to='/'
-                        sx={navStyles}>
+                    <Typography variant='h6' color="white" component={NavLink} exact to='/'
+                        sx={navBrandStyles}>
                         DEESTORE
                     </Typography>
                     <MaterialUISwitch checked={darkMode} onChange={handleThemeChange} />
