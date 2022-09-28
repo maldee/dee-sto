@@ -12,7 +12,7 @@ export default function BasketPage() {
     return (
         <>
             <BasketTable items={basket.items} />
-            <Divider sx={{mb: 5}}/>
+            <Divider sx={{mb: 3}}/>
             <Grid container>
                 
                 <Typography variant='h6' sx={{mb: 2}}>Order Summery</Typography>
