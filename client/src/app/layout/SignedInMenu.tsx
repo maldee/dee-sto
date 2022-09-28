@@ -24,7 +24,7 @@ export default function SignedInMenu() {
                 onClick={handleClick}
                 sx={{ typography: 'h6' }}
             >
-                {user?.email}
+                {user?.email.split('@')[0]}
             </Button>
             <Menu
                 anchorEl={anchorEl}
