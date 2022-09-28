@@ -89,7 +89,7 @@ export default function ProductDetails() {
                             onChange={handleInputChange}
                         />
                     </Grid>
-                    <Grid item xs={12} sm={6} md={3} sx={{mb: 5}}>
+                    <Grid item xs={12} sm={6} md={4} sx={{mb: 5}}>
                         <LoadingButton
                             disabled={item?.quantity === quantity}
                             loading={status.includes('pending')}
