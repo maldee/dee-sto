@@ -21,7 +21,7 @@ export default function BasketTable({ items, isBasket = true }: Props) {
                     <TableRow>
                         <TableCell>Product</TableCell>
                         <TableCell align="right">Price</TableCell>
-                        <TableCell align="center">Quantity</TableCell>
+                        <TableCell width="30%" align="center">Quantity</TableCell>
                         <TableCell align="right">Subtotal</TableCell>
                         {isBasket &&
                             <TableCell align="right"></TableCell>}

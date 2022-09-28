@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Divider, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../app/store/configureStore";
 import BasketSummary from "./BasketSummary";
@@ -12,10 +12,15 @@ export default function BasketPage() {
     return (
         <>
             <BasketTable items={basket.items} />
+            <Divider sx={{mb: 5}}/>
             <Grid container>
-                <Grid item xs={6} />
-                <Grid item xs={6}>
+                
+                <Typography variant='h6' sx={{mb: 2}}>Order Summery</Typography>
+                <Grid item xs={12} sm={6} md={12} />
+                
+                <Grid item xs={12} sm={6} md={6} sx={{mb: 5}}>
                     <BasketSummary />
+                    <Divider sx={{mb: 3}}/>
                     <Button
                         component={Link}
                         to='/checkout'
