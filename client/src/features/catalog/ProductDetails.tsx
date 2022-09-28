@@ -44,14 +44,14 @@ export default function ProductDetails() {
 
     return (
         <Grid container spacing={6}>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6} md={4}>
                 <img src={product.pictureUrl} alt={product.name} style={{width: '100%'}} />
             </Grid>
-            <Grid item xs={6}>
-                <Typography variant='h3'>{product.name}</Typography>
+            <Grid item xs={12} sm={6} md={8}>
+                <Typography variant='h4'>{product.name}</Typography>
                 <Divider sx={{mb: 2}} />
                 <Typography variant='h4' color='secondary'>${(product.price / 100).toFixed(2)}</Typography>
-                <TableContainer>
+                <TableContainer sx={{mb: 3}}>
                     <Table>
                         <TableBody>
                             <TableRow>
@@ -77,8 +77,9 @@ export default function ProductDetails() {
                         </TableBody>
                     </Table>
                 </TableContainer>
+               
                 <Grid container spacing={2}>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={6} md={3}>
                         <TextField 
                             variant='outlined'
                             type='number'
@@ -88,7 +89,7 @@ export default function ProductDetails() {
                             onChange={handleInputChange}
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={6} md={3} sx={{mb: 5}}>
                         <LoadingButton
                             disabled={item?.quantity === quantity}
                             loading={status.includes('pending')}
