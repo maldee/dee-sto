@@ -1,4 +1,4 @@
-import { Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
+import { Container, Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
 import AppPagination from "../../app/components/AppPagination";
 import AppPaginationMobile from "../../app/components/AppPaginationMobile";
 import CheckboxButtons from "../../app/components/CheckboxButtons";
@@ -26,89 +26,85 @@ export default function Catalog() {
     if (!filtersLoaded) return <LoadingComponent message='Loading products...' />
 
     return (
+        <Container sx={{ mt: 4 }}>
+            <Grid container columnSpacing={4}>
+                {
+                    isMatch ? (
+                        <>
+                        </>
+                    ) : (
+                        <>
 
-        <Grid container columnSpacing={4}>
-            {
-                isMatch ? (
-                    <>
-                    </>
-                ) : (
-                    <>
+                            <Grid item xs={3}>
+                                <Paper sx={{ mb: 2, p: 2 }}>
+                                    <RadioButtonGroup
+                                        selectedValue={productParams.orderBy}
+                                        options={sortOptions}
+                                        onChange={(e) => dispatch(setProductParams({ orderBy: e.target.value }))}
+                                    />
+                                </Paper>
+                                <Paper sx={{ mb: 2, p: 2 }}>
+                                    <CheckboxButtons
+                                        items={brands}
+                                        checked={productParams.brands}
+                                        onChange={(items: string[]) => dispatch(setProductParams({ brands: items }))}
+                                    />
+                                </Paper>
+                                <Paper sx={{ mb: 2, p: 2 }}>
+                                    <CheckboxButtons
+                                        items={types}
+                                        checked={productParams.types}
+                                        onChange={(items: string[]) => dispatch(setProductParams({ types: items }))}
+                                    />
+                                </Paper>
+                            </Grid>
+                        </>
+                    )
+                }
+                {
+                    isMatch ? (
+                        <>
+                            <Grid item xs={12}>
+                                <ProductList products={products} />
+                            </Grid>
+                        </>
+                    ) : (
+                        <>
+                            <Grid item xs={9}>
+                                <ProductList products={products} />
+                            </Grid>
+                        </>
+                    )
+                }
+                {
+                    isMatch ? (
+                        <>
 
-                        <Grid item xs={3}>
-                            <Paper sx={{ mb: 2, p: 2 }}>
-                                <RadioButtonGroup
-                                    selectedValue={productParams.orderBy}
-                                    options={sortOptions}
-                                    onChange={(e) => dispatch(setProductParams({ orderBy: e.target.value }))}
-                                />
-                            </Paper>
-                            <Paper sx={{ mb: 2, p: 2 }}>
-                                <CheckboxButtons
-                                    items={brands}
-                                    checked={productParams.brands}
-                                    onChange={(items: string[]) => dispatch(setProductParams({ brands: items }))}
-                                />
-                            </Paper>
-                            <Paper sx={{ mb: 2, p: 2 }}>
-                                <CheckboxButtons
-                                    items={types}
-                                    checked={productParams.types}
-                                    onChange={(items: string[]) => dispatch(setProductParams({ types: items }))}
-                                />
-                            </Paper>
-                        </Grid>
-                    </>
-                )
-            }
-            {
-                isMatch ? (
-                    <>
-                        <Grid item xs={12}>
-                            <ProductList products={products} />
-                        </Grid>
-                    </>
-                ) : (
-                    <>
-                        <Grid item xs={9}>
-                            <ProductList products={products} />
-                        </Grid>
-                    </>
-                )
-            }
- {
-                isMatch ? (
-                    <>
-                       
-            <Grid item xs={12} sx={{ mb: 2 ,mt: 2}}>
-                {metaData &&
-                    <AppPaginationMobile
-                        metaData={metaData}
-                        onPageChange={(page: number) => dispatch(setPageNumber({ pageNumber: page }))}
-                    />}
+                            <Grid item xs={12} sx={{ mb: 2, mt: 2 }}>
+                                {metaData &&
+                                    <AppPaginationMobile
+                                        metaData={metaData}
+                                        onPageChange={(page: number) => dispatch(setPageNumber({ pageNumber: page }))}
+                                    />}
+                            </Grid>
+                        </>
+                    ) : (
+                        <>
+                            <Grid item xs={3} />
+                            <Grid item xs={9} sx={{ mb: 2, mt: 2 }}>
+                                {metaData &&
+                                    <AppPagination
+                                        metaData={metaData}
+                                        onPageChange={(page: number) => dispatch(setPageNumber({ pageNumber: page }))}
+                                    />}
+                            </Grid>
+                        </>
+                    )
+                }
+
+
             </Grid>
-                    </>
-                ) : (
-                    <>
-                         <Grid item xs={3} />
-            <Grid item xs={9} sx={{ mb: 2 , mt: 2}}>
-                {metaData &&
-                    <AppPagination
-                        metaData={metaData}
-                        onPageChange={(page: number) => dispatch(setPageNumber({ pageNumber: page }))}
-                    />}
-            </Grid>
-                    </>
-                )
-            }
 
-           
-        </Grid>
-
-
-
-
-
-
+        </Container>
     )
 }

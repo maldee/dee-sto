@@ -65,7 +65,7 @@ function App() {
       <ToastContainer position='bottom-right' hideProgressBar theme='colored' />
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
-      <Route exact path='/' component={HomePage} />
+      <Route exact path='/' component={Catalog} />
       <Route path={'/(.+)'} render={() => (
       <Container  sx={{ mt: 4 }}>
         <Switch>
