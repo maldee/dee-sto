@@ -54,6 +54,7 @@ export default function DrawerMenu() {
                   to={path}
                   key={path}
                   sx={navStyles}
+                  onClick={() => setOpenDrawer(false)}
                 >
                   {title.toUpperCase()}
                 </ListItem>
@@ -81,16 +82,6 @@ export default function DrawerMenu() {
 
         </List>
         <List>
-          <ListItemButton>
-            <ListItemIcon>
-              <IconButton component={Link} to='/basket' size='large' sx={{ color: 'inherit' }}>
-                <Badge badgeContent={itemCount} color='secondary'>
-                  <ShoppingCart />
-                </Badge>
-              </IconButton>
-            </ListItemIcon>
-          </ListItemButton>
-
           <ListItemButton>
             <ListItemIcon>
               {user ? (

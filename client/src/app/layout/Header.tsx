@@ -1,9 +1,11 @@
 import { ShoppingCart } from "@mui/icons-material";
-import { AppBar, Badge, Box, IconButton, List, ListItem, styled, Switch, Toolbar, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { AppBar, Badge, Box, IconButton, List, ListItem, styled, Switch, Toolbar, Typography, useTheme, useMediaQuery, alpha, InputBase } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import { useAppSelector } from "../store/configureStore";
 import DrawerMenu from "./DrawerMenu";
 import SignedInMenu from "./SignedInMenu";
+import SearchIcon from '@mui/icons-material/Search';
+import ProductSearch from "../../features/catalog/ProductSearch";
 
 interface Props {
     darkMode: boolean;
@@ -38,6 +40,34 @@ const navBrandStyles = {
     textDecoration: 'none',
     typography: 'h6'
 }
+
+const Search = styled('div')(({ theme }) => ({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+        backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(3),
+        width: 'auto',
+    },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+}));
+
+
 
 export default function Header({ darkMode, handleThemeChange }: Props) {
     const { basket } = useAppSelector(state => state.basket);
@@ -96,19 +126,32 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
     return (
         <AppBar position='static' elevation={0}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Box display='flex' alignItems='center'>
-                                <Typography variant='h6' color="white" component={NavLink} exact to='/'
-                                    sx={navBrandStyles}>
-                                    DEESTORE
-                                </Typography>
-                                <MaterialUISwitch checked={darkMode} onChange={handleThemeChange} />
-                            </Box>
+                <Box display='flex' alignItems='center'>
+                    <Typography variant='h6' color="white" component={NavLink} exact to='/'
+                        sx={navBrandStyles}>
+                        DEESTORE
+                    </Typography>
+                    <MaterialUISwitch checked={darkMode} onChange={handleThemeChange} />
+                </Box>
+                <Search>
+                    <SearchIconWrapper>
+                        <SearchIcon />
+                    </SearchIconWrapper>
+                   
+                     <ProductSearch />
+                </Search>
                 {
                     isMatch ? (
                         <>
-                            
-                           
-                            <DrawerMenu />
+                            <Box display='flex' alignItems='center'>
+                                <IconButton component={Link} to='/basket' size='large' sx={{ color: 'inherit' }}>
+                                    <Badge badgeContent={itemCount} color='secondary'>
+                                        <ShoppingCart />
+                                    </Badge>
+                                </IconButton>
+                                <DrawerMenu />
+                            </Box>
+
                         </>
                     ) : (
                         <>
@@ -162,7 +205,7 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
 
 
             </Toolbar>
-            
+
         </AppBar>
     )
 }

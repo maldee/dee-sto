@@ -36,9 +36,6 @@ export default function Catalog() {
                     <>
 
                         <Grid item xs={3}>
-                            <Paper sx={{ mb: 2 }}>
-                                <ProductSearch />
-                            </Paper>
                             <Paper sx={{ mb: 2, p: 2 }}>
                                 <RadioButtonGroup
                                     selectedValue={productParams.orderBy}
