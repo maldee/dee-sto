@@ -129,7 +129,7 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                 <Box display='flex' alignItems='center'>
                     <Typography variant='h6' color="white" component={NavLink} exact to='/'
                         sx={navBrandStyles}>
-                        DEESTORE
+                        STORE
                     </Typography>
                     <MaterialUISwitch checked={darkMode} onChange={handleThemeChange} />
                 </Box>

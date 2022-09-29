@@ -26,7 +26,7 @@ export default function Catalog() {
     if (!filtersLoaded) return <LoadingComponent message='Loading products...' />
 
     return (
-        <Container sx={{ mt: 4 }}>
+        <Container >
             <Grid container columnSpacing={4}>
                 {
                     isMatch ? (
@@ -35,7 +35,7 @@ export default function Catalog() {
                     ) : (
                         <>
 
-                            <Grid item xs={3}>
+                            <Grid sx={{ mt: 4 }} item xs={3}>
                                 <Paper sx={{ mb: 2, p: 2 }}>
                                     <RadioButtonGroup
                                         selectedValue={productParams.orderBy}
@@ -65,13 +65,13 @@ export default function Catalog() {
                     isMatch ? (
                         <>
                             <Grid item xs={12}>
-                                <ProductList products={products} />
+                                <ProductList productsp={products} />
                             </Grid>
                         </>
                     ) : (
                         <>
-                            <Grid item xs={9}>
-                                <ProductList products={products} />
+                            <Grid sx={{ mt: 4 }} item xs={9}>
+                                <ProductList productsp={products} />
                             </Grid>
                         </>
                     )
