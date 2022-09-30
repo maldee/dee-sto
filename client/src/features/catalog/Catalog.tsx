@@ -26,7 +26,7 @@ export default function Catalog() {
     if (!filtersLoaded) return <LoadingComponent message='Loading products...' />
 
     return (
-        <Container>
+        <>
             <Grid container columnSpacing={4}>
                 {
                     isMatch ? (
@@ -105,6 +105,6 @@ export default function Catalog() {
 
             </Grid>
 
-        </Container>
+        </>
     )
 }
