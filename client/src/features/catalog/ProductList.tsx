@@ -53,14 +53,15 @@ export default function ProductList({ productsp }: Props) {
             {
             isMatch ? (
                 <>
-                <Box display='flex' justifyContent="flex-start">
-                <FormControl fullWidth sx={{ m: 1, minWidth: 120 }} size="small">
+                <Box display='flex' justifyContent="space-between">
+                <FormControl sx={{ m: 1, minWidth: 60 }} size="small">
                    
                     <Select
                     variant="standard"
                     disableUnderline={true}
                     defaultValue={'name'}
-                      onChange={(e) => dispatch(setProductParams({ orderBy: e.target.value }))}
+                    sx={{color: 'gray'}}
+                    onChange={(e) => dispatch(setProductParams({ orderBy: e.target.value }))}
                     >
                         <MenuItem value={'name'}>New to Old</MenuItem>
                         <MenuItem value={'priceDesc'}>Price High to Low</MenuItem>
@@ -68,9 +69,9 @@ export default function ProductList({ productsp }: Props) {
                       
                     </Select>
                   </FormControl>
-                
-                <DrawerMenuFilter />
-                </Box>
+                  <DrawerMenuFilter />
+                  </Box>
+                 
                   
                 </>
             ) : (

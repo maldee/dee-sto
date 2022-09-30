@@ -65,7 +65,7 @@ export default function DrawerMenuFilter() {
   return (
     <>
       <Drawer anchor='right' open={openDrawer} onClose={() => setOpenDrawer(false)}>
-
+      <Typography variant='subtitle2' sx={{m: 2}}>Filter By</Typography>
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
           <nav aria-label="main mailbox folders">
             <List>
@@ -73,7 +73,7 @@ export default function DrawerMenuFilter() {
 
               <ListItem disablePadding>
                 <ListItemButton style={{ minWidth: 200 }}>
-
+                  
                   <FormControl fullWidth>
                     <InputLabel id="brand">Brand</InputLabel>
                     <Select
@@ -81,7 +81,8 @@ export default function DrawerMenuFilter() {
                       name='brand'
                       label="Brand"
                       control={control}
-                      onChange={(e) => dispatch(setProductParams({ brands: e.target.value }))}
+                      onChange={(e) => {dispatch(setProductParams({ brands: e.target.value })); setOpenDrawer(false)}}
+                      
                     >
                       {brands.map((item, index) => (
                         <MenuItem key={index} value={item}>{item}</MenuItem>
@@ -99,7 +100,8 @@ export default function DrawerMenuFilter() {
                     name='type'
                     label="Types"
                     control={control}
-                    onChange={(e) => dispatch(setProductParams({ types: e.target.value }))}
+                    onChange={(e) => {dispatch(setProductParams({ types: e.target.value })); setOpenDrawer(false)}}
+                    
                   >
                     {types.map((item, index) => (
                       <MenuItem key={index} value={item}>{item}</MenuItem>

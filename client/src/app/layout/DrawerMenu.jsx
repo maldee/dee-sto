@@ -73,6 +73,7 @@ export default function DrawerMenu() {
                   component={NavLink}
                   to={'/inventory'}
                   sx={navStyles}
+                  
                 >
                   INVENTORY
                 </ListItem>
@@ -94,6 +95,7 @@ export default function DrawerMenu() {
                       to={path}
                       key={path}
                       sx={navStyles}
+                      onClick={() => setOpenDrawer(false)}
                     >
                       {title.toUpperCase()}
                     </ListItem>
