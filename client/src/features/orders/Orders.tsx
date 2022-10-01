@@ -1,4 +1,4 @@
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button } from "@mui/material";
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button, Typography, Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import agent from "../../app/api/agent";
 import LoadingComponent from "../../app/layout/LoadingComponent";
@@ -21,45 +21,52 @@ export default function Orders() {
     if (loading) return <LoadingComponent message='Loading orders' />
 
     if (selectedOrderNumber > 0) return (
-        <OrderDetailed 
+        <OrderDetailed
             order={orders?.find(o => o.id === selectedOrderNumber)!}
             setSelectedOrder={setSelectedOrderNumber}
         />
     )
 
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Order number</TableCell>
-                        <TableCell align="right">Total</TableCell>
-                        <TableCell align="right">Order Date</TableCell>
-                        <TableCell align="right">Order Status</TableCell>
-                        <TableCell align="right"></TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {orders?.map((order) => (
-                        <TableRow
-                            key={order.id}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row">
-                                {order.id}
-                            </TableCell>
-                            <TableCell align="right">{currencyFormat(order.total)}</TableCell>
-                            <TableCell align="right">{order.orderDate.split('T')[0]}</TableCell>
-                            <TableCell align="right">{order.orderStatus}</TableCell>
-                            <TableCell align="right">
-                                <Button onClick={() => setSelectedOrderNumber(order.id)}>
-                                    View
-                                </Button>
-                            </TableCell>
+        <>
+            <Box  display='flex' justifyContent='space-between'>
+                <Typography sx={{ p: 2 }} variant='h5'>My Orders</Typography>
+            </Box>
+
+            <TableContainer component={Paper}>
+
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Order number</TableCell>
+                            <TableCell align="right">Total</TableCell>
+                            <TableCell align="right">Order Date</TableCell>
+                            <TableCell align="right">Order Status</TableCell>
+                            <TableCell align="right"></TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {orders?.map((order) => (
+                            <TableRow
+                                key={order.id}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell component="th" scope="row">
+                                    {order.id}
+                                </TableCell>
+                                <TableCell align="right">{currencyFormat(order.total)}</TableCell>
+                                <TableCell align="right">{order.orderDate.split('T')[0]}</TableCell>
+                                <TableCell align="right">{order.orderStatus}</TableCell>
+                                <TableCell align="right">
+                                    <Button onClick={() => setSelectedOrderNumber(order.id)}>
+                                        View
+                                    </Button>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
     )
 }

@@ -1,5 +1,5 @@
 import { LoadingButton } from "@mui/lab";
-import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
+import { Container, Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import NotFound from "../../app/errors/NotFound";
@@ -43,6 +43,7 @@ export default function ProductDetails() {
     if (!product) return <NotFound />
 
     return (
+        <Container sx={{ mt: 4 }}>
         <Grid container spacing={6}>
             <Grid item xs={12} sm={6} md={4}>
                 <img src={product.pictureUrl} alt={product.name} style={{width: '100%'}} />
@@ -106,5 +107,6 @@ export default function ProductDetails() {
                 </Grid>
             </Grid>
         </Grid>
+        </Container>
     )
 }

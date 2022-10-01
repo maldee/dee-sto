@@ -15,7 +15,7 @@ export default function BasketTable({ items, isBasket = true }: Props) {
     const { status } = useAppSelector(state => state.basket);
     const dispatch = useAppDispatch();
     return (
-        <TableContainer component={Paper}>
+        <TableContainer sx={{ mt: 4 }} component={Paper}>
             <Table sx={{ minWidth: 650 }}>
                 <TableHead>
                     <TableRow>

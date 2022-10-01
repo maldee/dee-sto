@@ -5,45 +5,28 @@ import { useAppSelector } from "../../app/store/configureStore";
 import ProductCard from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 
-import useProducts from "../../app/hooks/useProducts";
 
-import { yupResolver } from '@hookform/resolvers/yup';
-import { validationSchema } from "../../features/admin/productValidation";
-import agent from "../../app/api/agent";
 import { useAppDispatch } from "../../app/store/configureStore";
 
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import { FieldValues, useForm } from "react-hook-form";
-import * as React from 'react';
-import { setPageNumber, setProductParams } from "../../features/catalog/catalogSlice";
+import { setProductParams } from "../../features/catalog/catalogSlice";
 
 interface Props {
     productsp: Product[];
 }
 
-const sortOptions = [
-    { value: 'name', label: 'Alphabetical' },
-    { value: 'priceDesc', label: 'Price - High to low' },
-    { value: 'price', label: 'Price - Low to high' },
-]
+
 
 export default function ProductList({ productsp }: Props) {
     const { productsLoaded } = useAppSelector(state => state.catalog);
     const theme = useTheme();
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
     
-    const { products, brands, types, filtersLoaded, metaData } = useProducts();
-    const { productParams, } = useAppSelector(state => state.catalog);
     const dispatch = useAppDispatch();
-    const { control, reset, handleSubmit, watch, formState: { isDirty, isSubmitting } } = useForm({
-        mode: 'all'
-    
-      });
-      const [brand, setBrand] = React.useState('');
+      
 
     return (
         

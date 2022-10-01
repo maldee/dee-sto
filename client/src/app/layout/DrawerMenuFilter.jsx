@@ -2,63 +2,34 @@
 import Drawer from '@mui/material/Drawer';
 import * as React from 'react';
 import FilterListIcon from '@mui/icons-material/FilterList';
-import { ShoppingCart } from "@mui/icons-material";
-import { Badge, IconButton, List, ListItem, ListItemButton } from "@mui/material";
-import { Link, NavLink } from "react-router-dom";
-import { useAppSelector } from "../store/configureStore";
-import SignedInMenu from "./SignedInMenu";
+import { IconButton, List, ListItem, ListItemButton } from "@mui/material";
 
 
 
-import ListItemIcon from '@mui/material/ListItemIcon';
-import { Typography, Grid, Paper, Box, Button } from "@mui/material";
-import { useEffect } from "react";
-import { FieldValues, useForm } from "react-hook-form";
-import AppDropzone from "../../app/components/AppDropzone";
-import AppSelectList from "../../app/components/AppSelectList";
-import AppTextInput from "../../app/components/AppTextInput";
+import { Typography, Box } from "@mui/material";
+import { useForm } from "react-hook-form";
 import useProducts from "../../app/hooks/useProducts";
-import { Product } from "../../app/models/product";
-import { yupResolver } from '@hookform/resolvers/yup';
-import { validationSchema } from "../../features/admin/productValidation";
-import agent from "../../app/api/agent";
 import { useAppDispatch } from "../../app/store/configureStore";
 
-import { LoadingButton } from "@mui/lab";
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import { setPageNumber, setProductParams } from "../../features/catalog/catalogSlice";
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { setProductParams } from "../../features/catalog/catalogSlice";
+import Select from '@mui/material/Select';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
-const navStyles = {
-  color: 'inherit',
-  textDecoration: 'none',
-  typography: 'h6',
-  '&:hover': {
-    color: 'grey.500'
-  },
-  '&.active': {
-    color: '#707090'
-  }
-}
 
 export default function DrawerMenuFilter() {
 
-  const { products, brands, types, filtersLoaded, metaData } = useProducts();
-  const { productParams, } = useAppSelector(state => state.catalog);
+  const { brands, types } = useProducts();
   const dispatch = useAppDispatch();
 
   const [openDrawer, setOpenDrawer] = React.useState(false);
-  const { control, reset, handleSubmit, watch, formState: { isDirty, isSubmitting } } = useForm({
+  const { control } = useForm({
     mode: 'all'
 
   });
-  const [brand, setBrand] = React.useState('');
+  
 
 
 

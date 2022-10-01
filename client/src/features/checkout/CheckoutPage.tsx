@@ -12,6 +12,8 @@ import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { StripeElementType } from "@stripe/stripe-js";
 import { CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
 
 const steps = ['Shipping address', 'Review your order', 'Payment details'];
 
@@ -87,7 +89,7 @@ export default function CheckoutPage() {
                 const orderNumber = await agent.Orders.create({ saveAddress, shippingAddress });
                 setOrderNumber(orderNumber);
                 setPaymentSucceeded(true);
-                setPaymentMessage('Thank you - we have received your payment');
+                setPaymentMessage('Thank you');
                 setActiveStep(activeStep + 1);
                 dispatch(clearBasket());
                 setLoading(false);
@@ -143,10 +145,17 @@ export default function CheckoutPage() {
                 <>
                     {activeStep === steps.length ? (
                         <>
-                            <Typography variant="h5" gutterBottom>
+                            <Box display='flex' justifyContent='left'>
+                            <CheckCircleIcon sx={{ color: 'green', fontSize: 40 , mr: 1}}/> 
+                            <Typography variant="h4" gutterBottom>
                                 {paymentMessage}
                             </Typography>
+                            </Box>
+                            <Typography variant ="subtitle1">
+                                We have received your payment
+                            </Typography>
                             {paymentSucceeded ? (
+                               
                                 <Typography variant="subtitle1">
                                     Your order number is #{orderNumber}. We have emailed your order
                                     confirmation, and will send you an update when your order has

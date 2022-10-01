@@ -1,4 +1,4 @@
-import { debounce, InputBase, styled, TextField, useTheme } from "@mui/material";
+import { debounce, InputBase, styled } from "@mui/material";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { setProductParams } from "./catalogSlice";
@@ -21,7 +21,7 @@ export default function ProductSearch() {
     const {productParams} = useAppSelector(state => state.catalog);
     const [searchTerm, setSearchTerm] = useState(productParams.searchTerm);
     const dispatch = useAppDispatch();
-    const theme = useTheme();
+    
    
 
     const debouncedSearch = debounce((event: any) => {

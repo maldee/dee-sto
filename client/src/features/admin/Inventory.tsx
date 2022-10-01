@@ -43,7 +43,7 @@ export default function Inventory() {
     return (
         <>
             <Box display='flex' justifyContent='space-between'>
-                <Typography sx={{ p: 2 }} variant='h4'>Inventory</Typography>
+                <Typography sx={{ p: 2 }} variant='h5'>Inventory</Typography>
                 <Button onClick={() => setEditMode(true)} sx={{ m: 2 }} size='large' variant='contained'>Create</Button>
             </Box>
             <TableContainer component={Paper}>

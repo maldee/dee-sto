@@ -2,9 +2,8 @@
 import Drawer from '@mui/material/Drawer';
 import * as React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
-import { ShoppingCart } from "@mui/icons-material";
-import { Badge, IconButton, List, ListItem, ListItemButton } from "@mui/material";
-import { Link, NavLink } from "react-router-dom";
+import { IconButton, List, ListItem, ListItemButton } from "@mui/material";
+import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../store/configureStore";
 import SignedInMenu from "./SignedInMenu";
 
@@ -24,9 +23,8 @@ const navStyles = {
 }
 
 export default function DrawerMenu() {
-  const { basket } = useAppSelector(state => state.basket);
+  
   const { user } = useAppSelector(state => state.account);
-  const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0)
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const midLinks = [
     { title: 'catalog', path: '/catalog' },

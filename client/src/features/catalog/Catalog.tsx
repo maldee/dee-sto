@@ -1,4 +1,4 @@
-import { Container, Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
+import { Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
 import AppPagination from "../../app/components/AppPagination";
 import AppPaginationMobile from "../../app/components/AppPaginationMobile";
 import CheckboxButtons from "../../app/components/CheckboxButtons";
@@ -8,7 +8,6 @@ import LoadingComponent from "../../app/layout/LoadingComponent";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { setPageNumber, setProductParams } from "./catalogSlice";
 import ProductList from "./ProductList";
-import ProductSearch from "./ProductSearch";
 
 const sortOptions = [
     { value: 'name', label: 'Alphabetical' },

@@ -1,11 +1,15 @@
 import { ShoppingCart } from "@mui/icons-material";
-import { AppBar, Badge, Box, IconButton, List, ListItem, styled, Switch, Toolbar, Typography, useTheme, useMediaQuery, alpha, InputBase } from "@mui/material";
+import { AppBar, Badge, Box, IconButton, List, ListItem, styled, Toolbar, useTheme, useMediaQuery, alpha } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import { useAppSelector } from "../store/configureStore";
 import DrawerMenu from "./DrawerMenu";
 import SignedInMenu from "./SignedInMenu";
 import SearchIcon from '@mui/icons-material/Search';
 import ProductSearch from "../../features/catalog/ProductSearch";
+import logo from '../../assests/deeflowstore.jpg';
+import BrandLink from '@mui/material/Link';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 interface Props {
     darkMode: boolean;
@@ -35,12 +39,6 @@ const navStyles = {
     }
 }
 
-const navBrandStyles = {
-    color: '#707090',
-    textDecoration: 'none',
-    typography: 'h6'
-}
-
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -51,8 +49,12 @@ const Search = styled('div')(({ theme }) => ({
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
+    [theme.breakpoints.down('md')]: {
+        marginLeft: theme.spacing(2),
+        width: 'auto',
+    },
+    [theme.breakpoints.up('md')]: {
+        
         width: 'auto',
     },
 }));
@@ -76,78 +78,41 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
     const theme = useTheme();
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
-    const MaterialUISwitch = styled(Switch)(({ theme }) => ({
-        width: 62,
-        height: 34,
-        padding: 7,
-        '& .MuiSwitch-switchBase': {
-            margin: 1,
-            padding: 0,
-            transform: 'translateX(6px)',
-            '&.Mui-checked': {
-                color: '#fff',
-                transform: 'translateX(22px)',
-                '& .MuiSwitch-thumb:before': {
-                    backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
-                        '#fff',
-                    )}" d="M4.2 2.5l-.7 1.8-1.8.7 1.8.7.7 1.8.6-1.8L6.7 5l-1.9-.7-.6-1.8zm15 8.3a6.7 6.7 0 11-6.6-6.6 5.8 5.8 0 006.6 6.6z"/></svg>')`,
-                },
-                '& + .MuiSwitch-track': {
-                    opacity: 1,
-                    backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
-                },
-            },
-        },
-        '& .MuiSwitch-thumb': {
-            backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#001e3c',
-            width: 32,
-            height: 32,
-            '&:before': {
-                content: "''",
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                left: 0,
-                top: 0,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
-                    '#fff',
-                )}" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>')`,
-            },
-        },
-        '& .MuiSwitch-track': {
-            opacity: 1,
-            backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
-            borderRadius: 20 / 2,
-        },
-    }));
-
     return (
         <AppBar position='static' elevation={0}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Box display='flex' alignItems='center'>
-                    <Typography variant='h6' color="white" component={NavLink} exact to='/'
-                        sx={navBrandStyles}>
-                        STORE
-                    </Typography>
-                    <MaterialUISwitch checked={darkMode} onChange={handleThemeChange} />
+                    <BrandLink href="/">
+                        <Box
+                            component="img"
+                            sx={{ height: 54 }}
+                            alt="Logo"
+                            src={logo}
+                        />
+                    </BrandLink>
+
+
+
                 </Box>
                 <Search>
                     <SearchIconWrapper>
                         <SearchIcon />
                     </SearchIconWrapper>
-                   
-                     <ProductSearch />
+
+                    <ProductSearch />
                 </Search>
                 {
                     isMatch ? (
                         <>
                             <Box display='flex' alignItems='center'>
+                                
                                 <IconButton component={Link} to='/basket' size='large' sx={{ color: 'inherit' }}>
                                     <Badge badgeContent={itemCount} color='secondary'>
                                         <ShoppingCart />
                                     </Badge>
+                                </IconButton>
+                                <IconButton sx={{ ml: 1 }} onClick={handleThemeChange} color="inherit">
+                                    {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
                                 </IconButton>
                                 <DrawerMenu />
                             </Box>
@@ -176,6 +141,7 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                                     </ListItem>}
                             </List>
                             <Box display='flex' alignItems='center'>
+                                
                                 <IconButton component={Link} to='/basket' size='large' sx={{ color: 'inherit' }}>
                                     <Badge badgeContent={itemCount} color='secondary'>
                                         <ShoppingCart />
@@ -197,6 +163,9 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                                         ))}
                                     </List>
                                 )}
+                                <IconButton sx={{ ml: 1 }} onClick={handleThemeChange} color="inherit">
+                                    {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                                </IconButton>
                             </Box>
                         </>
                     )

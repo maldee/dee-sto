@@ -6,7 +6,7 @@ export default function ServerError() {
     const { state } = useLocation<any>();
 
     return (
-        <Container component={Paper}>
+        <Container sx={{ mt: 4 }} component={Paper}>
             {state?.error ? (
                 <>
                     <Typography variant='h3' color='error' gutterBottom>{state.error.title}</Typography>
