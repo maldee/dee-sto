@@ -1,4 +1,4 @@
-import { Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Grid, Paper, Typography, useMediaQuery, useTheme } from "@mui/material";
 import AppPagination from "../../app/components/AppPagination";
 import AppPaginationMobile from "../../app/components/AppPaginationMobile";
 import CheckboxButtons from "../../app/components/CheckboxButtons";
@@ -8,6 +8,7 @@ import LoadingComponent from "../../app/layout/LoadingComponent";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { setPageNumber, setProductParams } from "./catalogSlice";
 import ProductList from "./ProductList";
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 const sortOptions = [
     { value: 'name', label: 'Alphabetical' },
@@ -35,25 +36,34 @@ export default function Catalog() {
                         <>
 
                             <Grid sx={{ mt: 4 }} item xs={3}>
+    
                                 <Paper sx={{ mb: 2, p: 2 }}>
-                                    <RadioButtonGroup
-                                        selectedValue={productParams.orderBy}
-                                        options={sortOptions}
-                                        onChange={(e) => dispatch(setProductParams({ orderBy: e.target.value }))}
+                                <Box display='flex'>
+                                <FormatListBulletedIcon sx={{mt: '3px'}}/>
+                                <Typography variant='h6' sx={{mb: 1, ml: 1}}> Categories</Typography>
+                                    </Box>    
+                                
+                                    <CheckboxButtons
+                                        items={types}
+                                        checked={productParams.types}
+                                        onChange={(items: string[]) => dispatch(setProductParams({ types: items }))}
                                     />
                                 </Paper>
+
                                 <Paper sx={{ mb: 2, p: 2 }}>
+                                <Typography variant='h6' sx={{mb: 1}}>Brands</Typography>
                                     <CheckboxButtons
                                         items={brands}
                                         checked={productParams.brands}
                                         onChange={(items: string[]) => dispatch(setProductParams({ brands: items }))}
                                     />
                                 </Paper>
+
                                 <Paper sx={{ mb: 2, p: 2 }}>
-                                    <CheckboxButtons
-                                        items={types}
-                                        checked={productParams.types}
-                                        onChange={(items: string[]) => dispatch(setProductParams({ types: items }))}
+                                    <RadioButtonGroup
+                                        selectedValue={productParams.orderBy}
+                                        options={sortOptions}
+                                        onChange={(e) => dispatch(setProductParams({ orderBy: e.target.value }))}
                                     />
                                 </Paper>
                             </Grid>

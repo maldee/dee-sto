@@ -26,6 +26,7 @@ export default function CheckboxButtons({items, checked, onChange}: Props) {
                     control={<Checkbox 
                         checked={checkedItems.indexOf(item) !== -1}
                         onClick={() => handleChecked(item)}
+                        color="secondary"
                     />} 
                     label={item} 
                     key={item} 
