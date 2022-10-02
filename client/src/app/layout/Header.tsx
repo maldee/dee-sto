@@ -46,15 +46,13 @@ const Search = styled('div')(({ theme }) => ({
     '&:hover': {
         backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
     width: '100%',
     [theme.breakpoints.down('md')]: {
         marginLeft: theme.spacing(2),
         width: 'auto',
     },
     [theme.breakpoints.up('md')]: {
-        
+        marginLeft: theme.spacing(2.5),
         width: 'auto',
     },
 }));
@@ -91,16 +89,18 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                         />
                     </BrandLink>
 
-
-
-                </Box>
-                <Search>
+                    <Search>
                     <SearchIconWrapper>
                         <SearchIcon />
                     </SearchIconWrapper>
 
                     <ProductSearch />
                 </Search>
+
+
+                </Box>
+                
+                
                 {
                     isMatch ? (
                         <>
