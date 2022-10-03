@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { setPageNumber, setProductParams } from "./catalogSlice";
 import ProductList from "./ProductList";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import GrainOutlinedIcon from '@mui/icons-material/GrainOutlined';
 
 const sortOptions = [
     { value: 'name', label: 'Alphabetical' },
@@ -36,13 +37,13 @@ export default function Catalog() {
                         <>
 
                             <Grid sx={{ mt: 4 }} item xs={3}>
-    
+
                                 <Paper sx={{ mb: 2, p: 2 }}>
-                                <Box display='flex'>
-                                <FormatListBulletedIcon sx={{mt: '3px'}}/>
-                                <Typography variant='h6' sx={{mb: 1, ml: 1}}> Categories</Typography>
-                                    </Box>    
-                                
+                                    <Box display='flex'>
+                                        <FormatListBulletedIcon sx={{ mt: '3px' }} />
+                                        <Typography variant='h6' sx={{ mb: 1, ml: 1, color: '#17a2b8' }}> Categories</Typography>
+                                    </Box>
+
                                     <CheckboxButtons
                                         items={types}
                                         checked={productParams.types}
@@ -51,7 +52,11 @@ export default function Catalog() {
                                 </Paper>
 
                                 <Paper sx={{ mb: 2, p: 2 }}>
-                                <Typography variant='h6' sx={{mb: 1}}>Brands</Typography>
+                                    <Box display='flex'>
+                                        <GrainOutlinedIcon sx={{ mt: '3px' }} />
+                                        <Typography variant='h6' sx={{ mb: 1,ml: 1, color: '#9898ea' }}>Brands</Typography>
+                                    </Box>
+
                                     <CheckboxButtons
                                         items={brands}
                                         checked={productParams.brands}
