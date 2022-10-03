@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace API.Data.Migrations
 {
-    public partial class PublishInitial : Migration
+    public partial class removebrandcon : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -103,7 +103,8 @@ namespace API.Data.Migrations
                     PictureUrl = table.Column<string>(type: "text", nullable: true),
                     Type = table.Column<string>(type: "text", nullable: true),
                     Brand = table.Column<string>(type: "text", nullable: true),
-                    QuantityInStock = table.Column<int>(type: "integer", nullable: false)
+                    QuantityInStock = table.Column<int>(type: "integer", nullable: false),
+                    PublicId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -295,8 +296,8 @@ namespace API.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "1b1c20ee-add3-4e1d-9cd9-7c03e0792e22", "Member", "MEMBER" },
-                    { 2, "d4886db5-05c2-44e6-8197-05b296241c3d", "Admin", "ADMIN" }
+                    { 1, "c0d399c6-b134-480c-a722-5dfd01cfba26", "Member", "MEMBER" },
+                    { 2, "f836e247-e688-4fba-a7ab-804e994ff5de", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(
