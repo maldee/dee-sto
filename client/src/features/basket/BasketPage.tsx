@@ -12,24 +12,38 @@ export default function BasketPage() {
     return (
         <>
             <BasketTable items={basket.items} />
-            <Divider sx={{mb: 3}}/>
+            <Divider sx={{ mb: 3 }} />
             <Grid container>
-                
-                <Typography variant='h6' sx={{mb: 2}}>Order Summery</Typography>
+
+                <Typography variant='h6' sx={{ mb: 2 }}>Order Summery</Typography>
                 <Grid item xs={12} sm={6} md={12} />
-                
-                <Grid item xs={12} sm={6} md={6} sx={{mb: 5}}>
+
+                <Grid item xs={12} sm={6} md={6} sx={{ mb: 5 }}>
                     <BasketSummary />
-                    <Divider sx={{mb: 3}}/>
-                    <Button
-                        component={Link}
-                        to='/checkout'
-                        variant='contained'
-                        size='large'
-                        fullWidth
-                    >
-                        Checkout
-                    </Button>
+                    <Divider sx={{ mb: 3 }} />
+                    {basket.items.length >= 1 &&
+                        <Button
+                            component={Link}
+                            to='/checkout'
+                            variant='contained'
+                            size='large'
+                            fullWidth
+                        >
+                            Checkout
+                        </Button>
+                    }
+                    {basket.items.length < 1 &&
+                        <Button
+                            disabled
+                            component={Link}
+                            to='/checkout'
+                            variant='contained'
+                            size='large'
+                            fullWidth
+                        >
+                            Checkout
+                        </Button>
+                    }
                 </Grid>
             </Grid>
         </>
