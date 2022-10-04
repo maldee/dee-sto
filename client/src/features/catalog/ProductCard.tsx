@@ -17,7 +17,7 @@ export default function ProductCard({ product }: Props) {
 
     return (
         <Card>
-            <CardActionArea>
+            
             <CardMedia
                 sx={{ height: 200, backgroundSize: 'contain', bgcolor: 'white' }}
                 image={product.pictureUrl}
@@ -45,7 +45,7 @@ export default function ProductCard({ product }: Props) {
                 to={`/catalog/${product.id}`} 
                 size="small">View</Button>
             </CardContent>
-            </CardActionArea>
+            
         </Card>
     )
 }
