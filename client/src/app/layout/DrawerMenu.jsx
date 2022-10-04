@@ -27,7 +27,7 @@ export default function DrawerMenu() {
   const { user } = useAppSelector(state => state.account);
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const midLinks = [
-    { title: 'catalog', path: '/catalog' },
+    { title: 'shop', path: '/catalog' },
     { title: 'about', path: '/about' },
     { title: 'contact', path: '/contact' }
   ]
