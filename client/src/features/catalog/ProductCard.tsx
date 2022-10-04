@@ -16,7 +16,8 @@ export default function ProductCard({ product }: Props) {
     const dispatch = useAppDispatch();
 
     return (
-        <Card>
+        <Link to={`/catalog/${product.id}`} style={{ textDecoration: 'none' }}>
+        <Card >
             
             <CardMedia
                 sx={{ height: 200, backgroundSize: 'contain', bgcolor: 'white' }}
@@ -38,14 +39,9 @@ export default function ProductCard({ product }: Props) {
                     size="small">
                     Add to cart
                 </LoadingButton>
-                
-                <Button 
-                sx={{color: '#30304a',fontWeight: 'bold' }}
-                component={Link} 
-                to={`/catalog/${product.id}`} 
-                size="small">View</Button>
             </CardContent>
             
         </Card>
+        </Link>
     )
 }

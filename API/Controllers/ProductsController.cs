@@ -39,8 +39,11 @@ namespace API.Controllers
                 .Filter(productParams.Brands, productParams.Types)
                 .AsQueryable();
 
+            // var products = await PagedList<Product>.ToPagedList(query,
+            //     productParams.PageNumber, productParams.PageSize);
+
             var products = await PagedList<Product>.ToPagedList(query,
-                productParams.PageNumber, productParams.PageSize);
+           productParams.PageNumber, 12);
 
             Response.AddPaginationHeader(products.MetaData);
 
