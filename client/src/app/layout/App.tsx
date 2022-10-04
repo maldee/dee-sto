@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import { Route, Switch } from "react-router";
 import { ToastContainer } from "react-toastify";
 import AboutPage from "../../features/about/AboutPage";
-import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
 import ContactPage from "../../features/contact/ContactPage";
 import Header from "./Header";
@@ -21,6 +20,8 @@ import PrivateRoute from "./PrivateRoute";
 import Orders from "../../features/orders/Orders";
 import CheckoutWrapper from "../../features/checkout/CheckoutWrapper";
 import Inventory from "../../features/admin/Inventory";
+import HomePage from "../../features/home/HomePage";
+import Catalog from "../../features/catalog/Catalog";
 
 function App() {
   const dispatch = useAppDispatch();
