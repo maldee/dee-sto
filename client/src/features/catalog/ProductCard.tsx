@@ -5,7 +5,9 @@ import { Product } from "../../app/models/product";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { currencyFormat } from "../../app/util/util";
 import { addBasketItemAsync } from "../basket/basketSlice";
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 interface Props {
     product: Product
@@ -28,7 +30,7 @@ export default function ProductCard({ product }: Props) {
                     <Typography gutterBottom variant="subtitle2" color='#30304a' component="div">
                         {product.name}
                     </Typography>
-                    <Typography gutterBottom color='primary' variant="subtitle1" sx={{ fontWeight: '500' }}>
+                    <Typography  color='primary' variant="subtitle1" sx={{ fontWeight: '500' }}>
                         {currencyFormat(product.price)}
                     </Typography>
 
@@ -37,11 +39,12 @@ export default function ProductCard({ product }: Props) {
             </Link>
             <CardActions>
                 <LoadingButton
-                    sx={{ backgroundColor: '#f7f7f7', color: '#da653e', fontWeight: 'bold', pl: 1, pr: 1 }}
+                    sx={{ backgroundColor: '#eaeaea', color: '#da653e', fontWeight: 'bold', pl: 1, pr: 1 }}
                     loading={status === 'pendingAddItem' + product.id}
                     onClick={() => dispatch(addBasketItemAsync({ productId: product.id }))}
                     size="small">
-                    Add to cart
+                        <ShoppingBasketIcon sx={{mr: 2}}/>
+                    buy now
                 </LoadingButton>
             </CardActions>
         </Card>
