@@ -16,32 +16,35 @@ export default function ProductCard({ product }: Props) {
     const dispatch = useAppDispatch();
 
     return (
-        <Link to={`/catalog/${product.id}`} style={{ textDecoration: 'none' }}>
+
         <Card >
-            
-            <CardMedia
-                sx={{ height: 200, backgroundSize: 'contain', bgcolor: 'white' }}
-                image={product.pictureUrl}
-                title={product.name}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="subtitle2" component="div">
-                {product.name}
-                </Typography>
-                <Typography gutterBottom color='primary' variant="subtitle1" sx={{ fontWeight: '500' }}>
-                    {currencyFormat(product.price)}
-                </Typography>
-                
+            <Link to={`/catalog/${product.id}`} style={{ textDecoration: 'none' }}>
+                <CardMedia
+                    sx={{ height: 200, backgroundSize: 'contain', bgcolor: 'white' }}
+                    image={product.pictureUrl}
+                    title={product.name}
+                />
+                <CardContent sx={{'&:last-child': { pb: 0 }}}>
+                    <Typography gutterBottom variant="subtitle2" component="div">
+                        {product.name}
+                    </Typography>
+                    <Typography gutterBottom color='primary' variant="subtitle1" sx={{ fontWeight: '500' }}>
+                        {currencyFormat(product.price)}
+                    </Typography>
+
+
+                </CardContent>
+            </Link>
+            <CardActions>
                 <LoadingButton
-                    sx={{backgroundColor: '#f7f7f7',color: '#da653e',fontWeight: 'bold' , pl: 1,pr: 1}}
+                    sx={{ backgroundColor: '#f7f7f7', color: '#da653e', fontWeight: 'bold', pl: 1, pr: 1 }}
                     loading={status === 'pendingAddItem' + product.id}
                     onClick={() => dispatch(addBasketItemAsync({ productId: product.id }))}
                     size="small">
                     Add to cart
                 </LoadingButton>
-            </CardContent>
-            
+            </CardActions>
         </Card>
-        </Link>
+
     )
 }
