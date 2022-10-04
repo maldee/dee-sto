@@ -14,7 +14,7 @@ export default function ProductDetails() {
     const {id} = useParams<{id: string}>();
     const product = useAppSelector(state => productSelectors.selectById(state, id));
     const {status: productStatus} = useAppSelector(state => state.catalog);
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     const item = basket?.items.find(i => i.productId === product?.id);
 
     useEffect(() => {
@@ -86,6 +86,7 @@ export default function ProductDetails() {
                             type='number'
                             label='Quantity in Cart'
                             fullWidth
+                            defaultValue={1}
                             value={quantity}
                             onChange={handleInputChange}
                         />
