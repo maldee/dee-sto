@@ -86,7 +86,6 @@ export default function ProductDetails() {
                             type='number'
                             label='Quantity in Cart'
                             fullWidth
-                            defaultValue={1}
                             value={quantity}
                             onChange={handleInputChange}
                         />
