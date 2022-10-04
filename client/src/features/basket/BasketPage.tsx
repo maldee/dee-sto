@@ -9,6 +9,8 @@ export default function BasketPage() {
 
     if (!basket) return <Typography variant='h6'>Your basket is empty</Typography>
 
+    if (basket.items.length < 1 ) return <Typography sx={{mt: 4}} variant='h6'>Your basket is empty</Typography>
+
     return (
         <>
             <BasketTable items={basket.items} />

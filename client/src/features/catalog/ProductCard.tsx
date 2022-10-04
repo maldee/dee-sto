@@ -44,7 +44,7 @@ export default function ProductCard({ product }: Props) {
                     onClick={() => dispatch(addBasketItemAsync({ productId: product.id }))}
                     size="small">
                         <ShoppingBasketIcon fontSize="small" sx={{mr: 1}}/>
-                    buy now
+                    Buy Now
                 </LoadingButton>
             </CardActions>
         </Card>
