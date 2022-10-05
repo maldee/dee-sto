@@ -94,7 +94,7 @@ export default function Catalog() {
                     isMatch ? (
                         <>
 
-                            <Grid item xs={12} sx={{ mb: 2, mt: 2 }}>
+                            <Grid item xs={12} sx={{ mb: 2 ,mt: 2}}>
                                 {metaData &&
                                     <AppPaginationMobile
                                         metaData={metaData}
@@ -105,7 +105,7 @@ export default function Catalog() {
                     ) : (
                         <>
                             <Grid item xs={3} />
-                            <Grid item xs={9} sx={{ mb: 2, mt: 2 }}>
+                            <Grid item xs={9} sx={{ mb: 2 }}>
                                 {metaData &&
                                     <AppPagination
                                         metaData={metaData}

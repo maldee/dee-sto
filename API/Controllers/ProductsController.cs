@@ -43,7 +43,7 @@ namespace API.Controllers
             //     productParams.PageNumber, productParams.PageSize);
 
             var products = await PagedList<Product>.ToPagedList(query,
-           productParams.PageNumber, 12);
+           productParams.PageNumber, 8);
 
             Response.AddPaginationHeader(products.MetaData);
 
