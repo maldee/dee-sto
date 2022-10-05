@@ -2,9 +2,7 @@ import { Typography, Grid, Paper, Box, Button } from "@mui/material";
 import { useEffect } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import AppDropzone from "../../app/components/AppDropzone";
-import AppSelectList from "../../app/components/AppSelectList";
 import AppTextInput from "../../app/components/AppTextInput";
-import useProducts from "../../app/hooks/useProducts";
 import { Product } from "../../app/models/product";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from "./productValidation";
@@ -23,7 +21,7 @@ export default function ProductForm({ product, cancelEdit }: Props) {
         mode: 'all',
         resolver: yupResolver<any>(validationSchema)
     });
-    const { brands, types } = useProducts();
+  
     const watchFile = watch('file', null);
     const dispatch = useAppDispatch();
 

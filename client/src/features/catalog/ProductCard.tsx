@@ -1,13 +1,11 @@
 import { LoadingButton } from "@mui/lab";
-import { Button, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Typography } from "@mui/material";
+import { Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Product } from "../../app/models/product";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { currencyFormat } from "../../app/util/util";
 import { addBasketItemAsync } from "../basket/basketSlice";
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 interface Props {
     product: Product

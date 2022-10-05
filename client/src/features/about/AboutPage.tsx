@@ -1,6 +1,4 @@
-import { Alert, AlertTitle, Button, ButtonGroup, Container, List, ListItem, ListItemText, Typography } from "@mui/material";
-import { useState } from "react";
-import agent from "../../app/api/agent";
+import { Container, Typography } from "@mui/material";
 
 export default function AboutPage() {
     
