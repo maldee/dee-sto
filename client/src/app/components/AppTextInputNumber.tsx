@@ -6,10 +6,12 @@ interface Props extends UseControllerProps {
     multiline?: boolean;
     rows?: number;
     type?: string;
-    
+    inputProps: { 
+        max: number, min: number 
+    }
 }
 
-export default function AppTextInput(props: Props) {
+export default function AppTextInputNumber(props: Props) {
     const {fieldState, field} = useController({...props, defaultValue: ''})
     return (
         <TextField 
@@ -18,6 +20,11 @@ export default function AppTextInput(props: Props) {
             multiline={props.multiline}
             rows={props.rows}
             type={props.type}
+            InputProps={{
+                inputProps: { 
+                    max: props.inputProps.max, min: props.inputProps.min 
+                }
+            }}
             fullWidth
             variant='outlined'
             error={!!fieldState.error}
