@@ -18,14 +18,14 @@ export default function ProductCard({ product }: Props) {
     return (
 
         <Card >
-            <Link to={`/catalog/${product.id}`} onClick={() => window.scrollTo(0, 0)} style={{ textDecoration: 'none' }}>
+            <Link to={`/catalog/${product.id}`} onClick={() => window.scrollTo(0, 0)} style={{color: 'inherit', textDecoration: 'none' }}>
                 <CardMedia
                     sx={{ height: 200, backgroundSize: 'contain', bgcolor: 'white' }}
                     image={product.pictureUrl}
                     title={product.name}
                 />
                 <CardContent sx={{'&:last-child': { pb: 0 }}}>
-                    <Typography gutterBottom variant="subtitle2" color='#30304a' component="div">
+                    <Typography gutterBottom variant="subtitle2" component="div">
                         {product.name}
                     </Typography>
                     <Typography  color='primary' variant="subtitle1" sx={{ fontWeight: '500' }}>

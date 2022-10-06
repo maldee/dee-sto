@@ -1,4 +1,4 @@
-import { Container, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { Container, createTheme, CssBaseline, PaletteMode, ThemeProvider } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import { Route, Switch } from "react-router";
 import { ToastContainer } from "react-toastify";
@@ -21,6 +21,48 @@ import Orders from "../../features/orders/Orders";
 import CheckoutWrapper from "../../features/checkout/CheckoutWrapper";
 import Inventory from "../../features/admin/Inventory";
 import Catalog from "../../features/catalog/Catalog";
+import React from "react";
+import { amber, grey } from "@mui/material/colors";
+
+
+const getDesignTokens = (mode: PaletteMode) => ({
+  palette: {
+    mode,
+    ...(mode === 'light'
+      ? {
+          // palette values for light mode
+          primary: {
+            main: "#30304a"
+          },
+          divider: amber[200],
+          background: {
+            default: '#eaeaea',
+            paper: '#fff',
+          },
+          text: {
+            primary: grey[900],
+            secondary: grey[800],
+          },
+        }
+      : {
+          // palette values for dark mode
+          primary: {
+            main: "#fff",
+           
+          },
+          divider: amber[200],
+          background: {
+            default: '#1c1c2b',
+            paper: '#30304a',
+          },
+          text: {
+            primary: '#fff',
+            secondary: grey[500],
+          },
+        }),
+  },
+});
+
 
 function App() {
   const dispatch = useAppDispatch();
@@ -39,22 +81,16 @@ function App() {
     initApp().then(() => setLoading(false));
   }, [initApp])
 
-  const [darkMode, setDarkMode] = useState(false);
-  const paletteType = darkMode ? 'dark' : 'light'
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#30304a"
-      },
-      mode: paletteType,
-      background: {
-        default: paletteType === 'light' ? '#eaeaea' : '#121212'
-      }
-    }
-  })
+  const [mode, setMode] = React.useState<PaletteMode>('light');
+
+  // Update the theme only if the mode changes
+  const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+
+
+  const [darkMode] = useState(false);
 
   function handleThemeChange() {
-    setDarkMode(!darkMode);
+    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
   }
 
   if (loading) return <LoadingComponent message='Redirecting to Deeflow Global...' />

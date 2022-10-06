@@ -127,7 +127,7 @@ export default function DrawerMenuFilter() {
 
       </Drawer>
       <IconButton sx={{ color: 'black' }} onClick={() => setOpenDrawer(!openDrawer)}>
-        <FilterListIcon />
+        <FilterListIcon color='primary'/>
       </IconButton>
     </>
   )
