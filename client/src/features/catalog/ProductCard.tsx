@@ -37,13 +37,7 @@ export default function ProductCard({ product }: Props) {
             </Link>
             <CardActions>
                 <LoadingButton
-                    variant="contained"
-                    color= "secondary"
-                    sx={{color: '#da653e', fontWeight: 'bold', pl: 1, pr: 1 ,boxShadow : 0, ':hover': {
-                        bgcolor: '#f2f2f2', // theme.palette.primary.main
-                        color: '#da653e',
-                        boxShadow : 0
-                      },}}
+                    sx={{color: '#da653e', fontWeight: 'bold', pl: 1, pr: 1 }}
                     loading={status === 'pendingAddItem' + product.id}
                     onClick={() => dispatch(addBasketItemAsync({ productId: product.id }))}
                     size="small">
