@@ -67,12 +67,12 @@ export default function Catalog() {
 
                                 <Paper sx={{ mb: 2, p: 2 }}>
                                     <Box display='flex'>
-                                        <FormatListBulletedIcon sx={{ mt: '3px' }}/>
+                                        <FormatListBulletedIcon sx={{ mt: '3px' }} />
                                         <Typography variant='h6' sx={{ mb: 1, ml: 1, color: '#17a2b8' }}> Categories</Typography>
                                     </Box>
 
                                     <FormControl fullWidth>
-                                    
+
                                         <Select
                                             labelId="demo-multiple-checkbox-label"
                                             id="demo-multiple-checkbox"
@@ -90,12 +90,12 @@ export default function Catalog() {
                                             MenuProps={MenuProps}
 
                                         >
-                                            <Box sx={{m: 1}}>
-                                            <CheckboxButtons
-                                                items={types}
-                                                checked={productParams.types}
-                                                onChange={(items: string[]) => dispatch(setProductParams({ types: items }))}
-                                            />
+                                            <Box sx={{ m: 1 }}>
+                                                <CheckboxButtons
+                                                    items={types}
+                                                    checked={productParams.types}
+                                                    onChange={(items: string[]) => dispatch(setProductParams({ types: items }))}
+                                                />
                                             </Box>
                                         </Select>
                                     </FormControl>
@@ -156,7 +156,7 @@ export default function Catalog() {
                     ) : (
                         <>
                             <Grid item xs={3} />
-                            <Grid item xs={9} sx={{ mb: 2 }}>
+                            <Grid item xs={9} sx={{ mb: 2, mt: 2 }}>
                                 {metaData &&
                                     <AppPagination
                                         metaData={metaData}
