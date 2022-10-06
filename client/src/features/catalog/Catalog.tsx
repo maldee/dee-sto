@@ -11,11 +11,27 @@ import ProductList from "./ProductList";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import GrainOutlinedIcon from '@mui/icons-material/GrainOutlined';
 
+import * as React from 'react';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
 const sortOptions = [
     { value: 'name', label: 'Alphabetical' },
     { value: 'priceDesc', label: 'Price - High to low' },
     { value: 'price', label: 'Price - Low to high' },
 ]
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            width: 250,
+        },
+    },
+};
 
 export default function Catalog() {
     const { products, brands, types, filtersLoaded, metaData } = useProducts();
@@ -23,8 +39,19 @@ export default function Catalog() {
     const dispatch = useAppDispatch();
     const theme = useTheme();
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+    const [categoryName, setCategoryName] = React.useState<string[]>([]);
 
     if (!filtersLoaded) return <LoadingComponent message='Loading products...' />
+
+    const handleChange = (event: SelectChangeEvent<typeof categoryName>) => {
+        const {
+            target: { value },
+        } = event;
+        setCategoryName(
+            // On autofill we get a stringified value.
+            typeof value === 'string' ? value.split(',') : value,
+        );
+    };
 
     return (
         <>
@@ -44,17 +71,41 @@ export default function Catalog() {
                                         <Typography variant='h6' sx={{ mb: 1, ml: 1, color: '#17a2b8' }}> Categories</Typography>
                                     </Box>
 
-                                    <CheckboxButtons
-                                        items={types}
-                                        checked={productParams.types}
-                                        onChange={(items: string[]) => dispatch(setProductParams({ types: items }))}
-                                    />
+                                    <FormControl fullWidth>
+                                    
+                                        <Select
+                                            labelId="demo-multiple-checkbox-label"
+                                            id="demo-multiple-checkbox"
+                                            fullWidth
+                                            sx={{
+                                                '& legend': { display: 'none' },
+                                                '& fieldset': { top: 0 },
+                                            }}
+                                            displayEmpty
+                                            multiple
+                                            value={productParams.types}
+                                            onChange={handleChange}
+                                            input={<OutlinedInput label="Tag" />}
+                                            renderValue={(selected) => selected.join(', ') || 'Select Category'}
+                                            MenuProps={MenuProps}
+
+                                        >
+                                            <Box sx={{m: 1}}>
+                                            <CheckboxButtons
+                                                items={types}
+                                                checked={productParams.types}
+                                                onChange={(items: string[]) => dispatch(setProductParams({ types: items }))}
+                                            />
+                                            </Box>
+                                        </Select>
+                                    </FormControl>
+
                                 </Paper>
 
                                 <Paper sx={{ mb: 2, p: 2 }}>
                                     <Box display='flex'>
                                         <GrainOutlinedIcon sx={{ mt: '3px' }} />
-                                        <Typography variant='h6' sx={{ mb: 1,ml: 1, color: '#9898ea' }}>Brands</Typography>
+                                        <Typography variant='h6' sx={{ mb: 1, ml: 1, color: '#9898ea' }}>Brands</Typography>
                                     </Box>
 
                                     <CheckboxButtons
@@ -94,7 +145,7 @@ export default function Catalog() {
                     isMatch ? (
                         <>
 
-                            <Grid item xs={12} sx={{ mb: 2 ,mt: 2}}>
+                            <Grid item xs={12} sx={{ mb: 2, mt: 2 }}>
                                 {metaData &&
                                     <AppPaginationMobile
                                         metaData={metaData}
