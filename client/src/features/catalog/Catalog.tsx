@@ -68,7 +68,7 @@ export default function Catalog() {
                                 <Paper sx={{ mb: 2, p: 2 }}>
                                     <Box display='flex'>
                                         <FormatListBulletedIcon sx={{ mt: '3px' }} />
-                                        <Typography variant='h6' sx={{ mb: 1, ml: 1, color: '#17a2b8' }}> Categories</Typography>
+                                        <Typography variant='h6' sx={{ mb: 1, ml: 1, color: '#9898ea' }}> Categories</Typography>
                                     </Box>
 
                                     <FormControl fullWidth>
