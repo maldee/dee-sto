@@ -90,24 +90,29 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                     </BrandLink>
 
                     <Search>
-                    <SearchIconWrapper>
-                        <SearchIcon />
-                    </SearchIconWrapper>
+                        <SearchIconWrapper>
+                            <SearchIcon />
+                        </SearchIconWrapper>
 
-                    <ProductSearch />
-                </Search>
+                        <ProductSearch />
+                    </Search>
 
 
                 </Box>
-                
-                
+
+
                 {
                     isMatch ? (
                         <>
                             <Box display='flex' alignItems='center'>
-                                
+
                                 <IconButton component={Link} to='/basket' size='large' sx={{ color: 'inherit' }}>
-                                    <Badge badgeContent={itemCount} color='secondary'>
+                                <Badge badgeContent={itemCount} sx={{
+                                        "& .MuiBadge-badge": {
+                                            color: "white",
+                                            backgroundColor: "#9c27b0"
+                                        }
+                                    }}>
                                         <ShoppingCart />
                                     </Badge>
                                 </IconButton>
@@ -141,9 +146,14 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                                     </ListItem>}
                             </List>
                             <Box display='flex' alignItems='center'>
-                                
+
                                 <IconButton component={Link} to='/basket' size='large' sx={{ color: 'inherit' }}>
-                                    <Badge badgeContent={itemCount} color='secondary'>
+                                    <Badge badgeContent={itemCount} sx={{
+                                        "& .MuiBadge-badge": {
+                                            color: "white",
+                                            backgroundColor: "#9c27b0"
+                                        }
+                                    }}>
                                         <ShoppingCart />
                                     </Badge>
                                 </IconButton>
