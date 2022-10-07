@@ -64,24 +64,24 @@ export default function ProductDetails() {
                         <Table>
                             <TableBody>
                                 <TableRow>
-                                    <TableCell>Name</TableCell>
-                                    <TableCell>{product.name}</TableCell>
+                                    <TableCell style={{borderBottom:"none"}}>Name</TableCell>
+                                    <TableCell style={{borderBottom:"none"}}>{product.name}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell>Description</TableCell>
-                                    <TableCell>{product.description}</TableCell>
+                                    <TableCell style={{borderBottom:"none"}}>Description</TableCell>
+                                    <TableCell style={{borderBottom:"none"}}>{product.description}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell>Type</TableCell>
-                                    <TableCell>{product.type}</TableCell>
+                                    <TableCell style={{borderBottom:"none"}}>Type</TableCell>
+                                    <TableCell style={{borderBottom:"none"}}>{product.type}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell>Brand</TableCell>
-                                    <TableCell>{product.brand}</TableCell>
+                                    <TableCell style={{borderBottom:"none"}}>Brand</TableCell>
+                                    <TableCell style={{borderBottom:"none"}}>{product.brand}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell>Quantity in stock</TableCell>
-                                    <TableCell>{product.quantityInStock}</TableCell>
+                                    <TableCell style={{borderBottom:"none"}}>Quantity in stock</TableCell>
+                                    <TableCell style={{borderBottom:"none"}}>{product.quantityInStock}</TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>
