@@ -78,30 +78,5 @@ namespace API.Controllers
 
             return new EmptyResult();
         }
-
-           [HttpPost("webhook/shipped")]
-        public async Task<ActionResult> StripeWebhookShipped()
-        {
-            var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
-
-            var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"],
-                _config["StripeSettings:WhSecret"]);
-
-            var charge = (Charge)stripeEvent.Data.Object;
-
-            var order = await _context.Orders.FirstOrDefaultAsync(x =>
-                x.PaymentIntentId == charge.PaymentIntentId);
-
-            if (charge.Status == "updated")
-            {
-                order.OrderStatus = OrderStatus.Shipped;
-            }else{
-                order.OrderStatus = OrderStatus.Pending;
-            }
-
-            await _context.SaveChangesAsync();
-
-            return new EmptyResult();
-        }
     }
 }
