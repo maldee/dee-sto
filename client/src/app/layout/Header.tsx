@@ -6,7 +6,7 @@ import DrawerMenu from "./DrawerMenu";
 import SignedInMenu from "./SignedInMenu";
 import SearchIcon from '@mui/icons-material/Search';
 import ProductSearch from "../../features/catalog/ProductSearch";
-import logo from '../../assests/deeflowstore.jpg';
+import logo from '../../assests/deeflow.jpg';
 import BrandLink from '@mui/material/Link';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
