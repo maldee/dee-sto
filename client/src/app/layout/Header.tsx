@@ -78,12 +78,12 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
 
     return (
         <AppBar position='static' elevation={0}>
-            <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Toolbar style={{paddingLeft: '15px'}} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Box display='flex' alignItems='center'>
                     <BrandLink href="/">
                         <Box
                             component="img"
-                            sx={{ height: 54 }}
+                            sx={{ height: 40 }}
                             alt="Logo"
                             src={logo}
                         />
