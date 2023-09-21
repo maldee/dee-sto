@@ -10,7 +10,7 @@
 
 ## Run client (client directory)
 
-1. cd api
+1. cd client
 2. `npm start`
 
 ## Build client (client directory)
