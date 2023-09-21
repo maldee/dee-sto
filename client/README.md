@@ -46,3 +46,5 @@ Your app is ready to be deployed!
 6. click pull request
 7. click merge
 
+<!-- "build": "(if exist ..\\API\\wwwroot rmdir /s /q ..\\API\\wwwroot) && react-scripts build && move build ../API/wwwroot", -->
+
