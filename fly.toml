@@ -7,7 +7,7 @@ app = "deestore"
 primary_region = "sin"
 
 [build]
-  image = "deeflow/deestore:latest"
+  image = "gihanpurple/dockerhub:latest"
 
 [env]
   ASPNETCORE_URLS="http://+:8080"
