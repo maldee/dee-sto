@@ -1,0 +1,22 @@
+# fly.toml app configuration file generated for deestore on 2023-09-22T23:24:03+05:30
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "deestore"
+primary_region = "sin"
+
+[build]
+  image = "deeflow/deestore:latest"
+
+[env]
+  ASPNETCORE_URLS="http://+:8080"
+  StripeSettings__PublishableKey="pk_test_51Lm1HVG0X8U0nLczOxt2NHo22V0Y9vni1TJZksFVxb4yCpOzNEwJH0r3dGLwpGnlHQJAd6hLB8SxiM2LlQYknoLW00628ntws9"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
