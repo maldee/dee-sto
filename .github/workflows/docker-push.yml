@@ -26,7 +26,7 @@ jobs:
         with:
           context: "{{defaultContext}}:API"
           push: true
-          tags: deeflow/deestore:latest
+          tags: deestoreimage:latest
   deploy:
     needs: docker
     name: Deploy app
