@@ -4,7 +4,7 @@ EXPOSE 8080
 
 # copy csproj and restore as distinct layers
 COPY *.csproj ./
-RUN dotnet restore
+RUN dotnet deestore
 
 # copy everything else and build
 COPY . ./
