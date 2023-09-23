@@ -1,21 +1,16 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /app
-EXPOSE 80
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
+WORKDIR /App
 
 # copy csproj and restore as distinct layers
-COPY *.csproj .
+COPY . ./
 RUN dotnet restore
 
-COPY . .
-WORKDIR /src/API
-RUN dotnet build -c Release -o /app
-
 # copy everything else and build
-FROM build AS publish
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish -c Release -o out
 
 # build a runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 as final
-WORKDIR /app
-COPY --from=publish /app .
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
+WORKDIR /App
+COPY --from=build-env /App/out .
+
 ENTRYPOINT ["dotnet", "API.dll"]
