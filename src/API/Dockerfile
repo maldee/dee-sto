@@ -1,12 +1,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
-WORKDIR /api
+WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY api/*.csproj .
+COPY app/*.csproj .
 RUN dotnet restore
 
 # copy everything else and build
-COPY api .
+COPY app .
 RUN dotnet publish -c Release -o /publish
 
 # build a runtime image
