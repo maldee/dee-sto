@@ -12,6 +12,6 @@ RUN dotnet publish -c Release -o out
 # build a runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 as runtime
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=build-env /app/wwwroot .
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "API.dll"]
