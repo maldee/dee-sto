@@ -11,7 +11,7 @@ COPY . ./
 RUN dotnet publish -c Release -o /app/publish
 WORKDIR /app/publish
 
-FROM base as final
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "API.dll"]
