@@ -8,10 +8,11 @@ RUN dotnet restore
 
 # copy everything else and build
 COPY . ./
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o /app/publish
+WORKDIR /app/publish
 
-# build a runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
+FROM base as final
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "API.dll"]
+

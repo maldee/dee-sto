@@ -15,7 +15,6 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
         Args = args,
 
 ContentRootPath = "/app/out",
-
 WebRootPath = "wwwroot",
     });
 
