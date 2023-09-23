@@ -52,6 +52,9 @@ else
 {
     // Use connection string provided at runtime by FlyIO.
     var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+    
+    // docker local
+    // var connUrl = "postgres://appuser:secret@docker.host.internal:5432/dev";
 
     // Parse connection URL to connection string for Npgsql
     connUrl = connUrl.Replace("postgres://", string.Empty);
