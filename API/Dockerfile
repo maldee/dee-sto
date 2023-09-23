@@ -3,15 +3,15 @@ WORKDIR /app
 EXPOSE 8080
 
 # copy csproj and restore as distinct layers
-COPY . ./
+COPY *.csproj ./
 RUN dotnet restore
 
 # copy everything else and build
+COPY . ./
 RUN dotnet publish -c Release -o out
 
 # build a runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
-WORKDIR /App
-COPY --from=build-env /App/out .
-
+WORKDIR /app
+COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "API.dll"]
